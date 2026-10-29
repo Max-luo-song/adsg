@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-29",
+  "project": "/inspire/hdd/global_user/guoluosong-253108120129/cvpr2027/adsg",
+  "results": {
+    "rgb_contract_tests": 0,
+    "posefree_tests": 0,
+    "syntax": 0,
+    "doctor": 2,
+    "model_source_imports": 0
+  },
+  "scenes": [
+    {
+      "scene": "023",
+      "frames": 151,
+      "images": 453
+    },
+    {
+      "scene": "114",
+      "frames": 151,
+      "images": 453
+    },
+    {
+      "scene": "172",
+      "frames": 151,
+      "images": 453
+    },
+    {
+      "scene": "327",
+      "frames": 151,
+      "images": 453
+    },
+    {
+      "scene": "552",
+      "frames": 141,
+      "images": 423
+    },
+    {
+      "scene": "621",
+      "frames": 141,
+      "images": 423
+    },
+    {
+      "scene": "703",
+      "frames": 171,
+      "images": 513
+    },
+    {
+      "scene": "788",
+      "frames": 69,
+      "images": 207
+    }
+  ],
+  "total_frames": 1126,
+  "total_images": 3378,
+  "gpu_inference_executed": false,
+  "training_executed": false,
+  "limitations": [
+    "Current remote host has no visible CUDA GPU",
+    "Selected training runtime is missing pytorch3d and nvdiffrast",
+    "Selected SegFormer runtime is missing mmcv",
+    "Object 3D boxes/yaw/motion and cross-camera identity are geometric bootstraps from 2D tracks and predicted depth, requiring GPU scene-level validation"
+  ],
+  "changed_tracked_diff_check": 0,
+  "existing_log_diffs": "Pre-existing user log modifications have whitespace; left untouched",
+  "failed_preflight_checks": [
+    {
+      "check": "semantic_imports",
+      "details": "{\"torch\": true, \"mmseg\": \"ModuleNotFoundError: No module named 'mmcv'\", \"mmcv\": \"ModuleNotFoundError: No module named 'mmcv'\"}"
+    },
+    {
+      "check": "train_imports",
+      "details": "{\"torch\": true, \"pytorch3d\": \"ModuleNotFoundError: No module named 'pytorch3d'\", \"gsplat\": true, \"nvdiffrast\": \"ModuleNotFoundError: No module named 'nvdiffrast'\", \"open3d\": true, \"omegaconf\": true, \"wandb\": true}"
+    },
+    {
+      "check": "cuda",
+      "details": "False 0"
+    }
+  ]
+}

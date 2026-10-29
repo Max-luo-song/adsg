@@ -1,0 +1,125 @@
+{
+  "ok": false,
+  "checks": [
+    {
+      "check": "python",
+      "ok": true,
+      "path": "/root/miniconda3/envs/dggt/bin/python"
+    },
+    {
+      "check": "omega_checkpoint",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/geometry_weights/vggt_omega_1b_512.pt"
+    },
+    {
+      "check": "moge_checkpoint",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/geometry_weights/moge-2-vitl/model.pt"
+    },
+    {
+      "check": "sam_checkpoint",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/third_party/Grounded-SAM-2/checkpoints/sam2.1_hiera_large.pt"
+    },
+    {
+      "check": "grounding_model",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/third_party/hf_cache/hub/models--IDEA-Research--grounding-dino-tiny/snapshots/a2bb814dd30d776dcf7e30523b00659f4f141c71"
+    },
+    {
+      "check": "segformer_config",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/adscenegraph/Omniscenegraph/third_party/SegFormer/local_configs/segformer/B5/segformer.b5.1024x1024.city.160k.py"
+    },
+    {
+      "check": "segformer_checkpoint",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/adscenegraph/Omniscenegraph/third_party/SegFormer/pretrained/segformer.b5.1024x1024.city.160k.pth"
+    },
+    {
+      "check": "traffic_config",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/cvpr2027/adsg/third_party/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+    },
+    {
+      "check": "traffic_checkpoint",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/cvpr2027/adsg/third_party/GroundingDINO/ckpt/grounding_dino/groundingdino_swint_ogc.pth"
+    },
+    {
+      "check": "rgb_scene_023",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/023/images"
+    },
+    {
+      "check": "rgb_scene_114",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/114/images"
+    },
+    {
+      "check": "rgb_scene_327",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/327/images"
+    },
+    {
+      "check": "rgb_scene_621",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/621/images"
+    },
+    {
+      "check": "rgb_scene_703",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/703/images"
+    },
+    {
+      "check": "rgb_scene_172",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/172/images"
+    },
+    {
+      "check": "rgb_scene_552",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/552/images"
+    },
+    {
+      "check": "rgb_scene_788",
+      "ok": true,
+      "path": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/data/UFO_paper/datasets/waymo/training/788/images"
+    },
+    {
+      "check": "pose_imports",
+      "ok": true,
+      "python": "/inspire/hdd3/project/intelligent-driving-agent/public/workspace/yx/ufoposefree/.venv-moge2/bin/python",
+      "details": "{\"torch\": true, \"torchvision\": true, \"einops\": true, \"cv2\": true, \"utils3d\": true, \"scipy\": true}"
+    },
+    {
+      "check": "sam_imports",
+      "ok": true,
+      "python": "/inspire/hdd/global_user/guoluosong-253108120129/yx-ufo/third_party/groundedsam2_env/bin/python",
+      "details": "{\"torch\": true, \"sam2\": true, \"transformers\": true}"
+    },
+    {
+      "check": "semantic_imports",
+      "ok": false,
+      "python": "/root/miniconda3/envs/dggt/bin/python",
+      "details": "{\"torch\": true, \"mmseg\": \"ModuleNotFoundError: No module named 'mmcv'\", \"mmcv\": \"ModuleNotFoundError: No module named 'mmcv'\"}"
+    },
+    {
+      "check": "traffic_imports",
+      "ok": true,
+      "python": "/root/miniconda3/envs/dggt/bin/python",
+      "details": "{\"torch\": true, \"groundingdino\": true, \"sklearn\": true}"
+    },
+    {
+      "check": "train_imports",
+      "ok": false,
+      "python": "/root/miniconda3/envs/dggt/bin/python",
+      "details": "{\"torch\": true, \"pytorch3d\": \"ModuleNotFoundError: No module named 'pytorch3d'\", \"gsplat\": true, \"nvdiffrast\": \"ModuleNotFoundError: No module named 'nvdiffrast'\", \"open3d\": true, \"omegaconf\": true, \"wandb\": true}"
+    },
+    {
+      "check": "cuda",
+      "ok": false,
+      "details": "False 0"
+    }
+  ]
+}

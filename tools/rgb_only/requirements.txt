@@ -1,0 +1,12 @@
+# Keep model runtimes separate if their torch/mmcv versions differ.
+# Training also needs the existing ADSG requirements and its pinned gsplat build.
+numpy
+Pillow
+opencv-python
+scipy
+scikit-learn
+omegaconf
+# Camera/depth: third_party/posefree/requirements-inference.txt
+# Tracking: Grounded-SAM-2's installed runtime (sam2 + transformers)
+# Semantics: SegFormer mmseg 0.x + compatible mmcv-full
+# Training: pytorch3d, gsplat (cuda_legacy API), nvdiffrast, open3d, wandb

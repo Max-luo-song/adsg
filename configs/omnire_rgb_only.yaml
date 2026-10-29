@@ -1,0 +1,281 @@
+seed: 0
+dataset: waymo/rgb_only_3cams
+trainer:
+  type: models.trainers.rgb_scene_graph.RGBMultiTrainer
+  optim:
+    num_iters: 40000
+    use_grad_scaler: false
+    cache_buffer_freq: 2000
+  render:
+    near_plane: 0.1
+    far_plane: 10000000000.0
+    antialiased: false
+    packed: false
+    absgrad: true
+    sparse_grad: false
+    batch_size: 1
+  losses:
+    rgb:
+      w: 0.8
+    ssim:
+      w: 0.2
+    mask:
+      w: 0.05
+      opacity_loss_type: bce
+    depth:
+      w: 0.01
+      inverse_depth: false
+      normalize: false
+      loss_type: l1
+    road:
+      w: 1
+    affine:
+      w: 1.0e-05
+  res_schedule:
+    double_steps: 250
+    downscale_times: 2
+  gaussian_optim_general_cfg:
+    xyz:
+      lr: 0.00016
+      lr_final: 1.6e-06
+      scale_factor: scene_radius
+    sh_dc:
+      lr: 0.0025
+    sh_rest:
+      lr: 0.000125
+    opacity:
+      lr: 0.05
+    scaling:
+      lr: 0.005
+    rotation:
+      lr: 0.001
+    roughness:
+      lr: 0.001
+    metallic:
+      lr: 0.001
+    normals:
+      lr: 0.001
+    asg_amplitude:
+      lr: 0.001
+    asg_sharpness:
+      lr: 0.001
+    asg_dir:
+      lr: 0.001
+  gaussian_ctrl_general_cfg:
+    warmup_steps: 500
+    reset_alpha_interval: 4000
+    refine_interval: 100
+    sh_degree_interval: 1000
+    n_split_samples: 2
+    reset_alpha_value: 0.01
+    densify_grad_thresh: 0.0003
+    densify_size_thresh: 0.002
+    cull_alpha_thresh: 0.005
+    cull_scale_thresh: 0.5
+    cull_screen_size: 0.15
+    split_screen_size: 0.05
+    stop_screen_size_at: 5000
+    stop_split_at: 20000
+    sh_degree: 3
+    road_sh_degree: 1
+model:
+  Background:
+    type: models.gaussians.VanillaGaussians
+    init:
+      max_points: 800000
+    ctrl:
+      use_pbr: true
+    reg:
+      sharp_shape_reg:
+        w: 1.0
+        step_interval: 10
+        max_gauss_ratio: 10.0
+  GlobalLighting:
+    type: models.modules.GlobalLightingModule
+    params:
+      sh_degree: 2
+      hidden_dim: 64
+      num_layers: 4
+      appearance_embedding_dim: 16
+    optim:
+      all:
+        lr: 0.001
+  RigidNodes:
+    type: models.nodes.RigidNodes
+    init:
+      instance_max_pts: 5000
+      only_moving: true
+      traj_length_thres: 1.0
+    ctrl:
+      cull_scale_thresh: 0.1
+      stop_screen_size_at: 40000
+      stop_split_at: 30000
+      cull_out_of_bound: true
+      densify_grad_thresh: 0.0002
+    reg:
+      sharp_shape_reg:
+        w: 1.0
+        step_interval: 10
+        max_gauss_ratio: 10.0
+      temporal_smooth_reg:
+        trans:
+          w: 0.01
+          smooth_range: 5
+    optim:
+      ins_rotation:
+        lr: 1.0e-05
+        lr_final: 5.0e-06
+      ins_translation:
+        lr: 0.0005
+        lr_final: 0.0001
+  TrafficLightNodes:
+    type: models.nodes.TrafficLightNodes
+    init:
+      instance_max_pts: 5000
+      only_moving: false
+      traj_length_thres: 0.5
+    networks:
+      D: 8
+      W: 256
+      embed_dim: 16
+      x_multires: 10
+      t_multires: 10
+      deform_quat: false
+      deform_scale: false
+      deform_shs: true
+    ctrl:
+      reset_alpha_value: 0.1
+      cull_scale_thresh: 0.1
+      stop_screen_size_at: 40000
+      stop_split_at: 30000
+      sh_degree: 3
+      cull_out_of_bound: false
+      use_deformgs_for_nonrigid: true
+      use_deformgs_after: 4000
+      stop_optimizing_canonical_xyz: true
+    reg:
+      sharp_shape_reg:
+        w: 1.0
+        step_interval: 10
+        max_gauss_ratio: 10.0
+      out_of_bound_loss:
+        w: 1.0
+        stop_after: 40000
+      temporal_smooth_reg:
+        trans:
+          w: 0.01
+          smooth_range: 5
+    optim:
+      xyz:
+        lr: 0.00016
+        lr_final: 1.6e-06
+        scale_factor: 2.0
+      embedding:
+        lr: 0.001
+        lr_final: 0.0001
+      deform_network:
+        lr: 0.0016
+        lr_final: 0.00016
+        scale_factor: 5.0
+      ins_rotation:
+        lr: 1.0e-05
+        lr_final: 5.0e-06
+      ins_translation:
+        lr: 0.0005
+        lr_final: 0.0001
+  DeformableNodes:
+    type: models.nodes.DeformableNodes
+    init:
+      instance_max_pts: 5000
+      only_moving: true
+      traj_length_thres: 0.5
+    networks:
+      D: 8
+      W: 256
+      embed_dim: 16
+      x_multires: 10
+      t_multires: 10
+      deform_quat: true
+      deform_scale: false
+    ctrl:
+      reset_alpha_value: 0.1
+      cull_scale_thresh: 0.1
+      stop_screen_size_at: 40000
+      stop_split_at: 30000
+      sh_degree: 3
+      cull_out_of_bound: false
+      use_deformgs_for_nonrigid: true
+      use_deformgs_after: 4000
+      stop_optimizing_canonical_xyz: true
+    reg:
+      sharp_shape_reg:
+        w: 1.0
+        step_interval: 10
+        max_gauss_ratio: 10.0
+      out_of_bound_loss:
+        w: 1.0
+        stop_after: 40000
+      temporal_smooth_reg:
+        trans:
+          w: 0.01
+          smooth_range: 5
+    optim:
+      xyz:
+        lr: 0.00016
+        lr_final: 1.6e-06
+        scale_factor: 2.0
+      embedding:
+        lr: 0.001
+        lr_final: 0.0001
+      deform_network:
+        lr: 0.0016
+        lr_final: 0.00016
+        scale_factor: 5.0
+      ins_rotation:
+        lr: 1.0e-05
+        lr_final: 5.0e-06
+      ins_translation:
+        lr: 0.0005
+        lr_final: 0.0001
+  RoadNodes:
+    type: models.nodes.RoadNodes
+    init:
+      max_points: 200000
+    reg:
+      from_lidar: false
+      lowest_opacity: 0.2
+  Sky:
+    type: models.modules.EnvLight
+    params:
+      resolution: 1024
+    optim:
+      all:
+        lr: 0.01
+  Affine:
+    type: models.modules.AffineTransform
+    params:
+      embedding_dim: 4
+      base_mlp_layer_width: 64
+      pixel_affine: false
+    optim:
+      all:
+        lr: 1.0e-05
+        weight_decay: 1.0e-06
+  CamPose:
+    type: models.modules.CameraOptModule
+    optim:
+      all:
+        lr: 1.0e-05
+        weight_decay: 1.0e-06
+render:
+  fps: 10
+  render_full: true
+  render_test: true
+  vis_lidar: false
+  vis_sky: false
+  vis_error: false
+logging:
+  vis_freq: 2000
+  print_freq: 500
+  saveckpt_freq: 20000
+  save_seperate_video: true

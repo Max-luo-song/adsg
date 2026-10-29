@@ -1,0 +1,10 @@
+{
+  "source_repository": "ADstudio",
+  "source_branch": "paperv1",
+  "source_commit": "efcc48f45e9ace0b2c2bfa582d43e1118ca51b05",
+  "snapshot": "Complete committed project; excludes old runtime logs and machine IDE metadata",
+  "uploaded_dataset": false,
+  "uploaded_model_checkpoints": false,
+  "preserved_target_initial_commit": "f71ba7fb6203c5304897d90e67310eac0fc3a3ff",
+  "validation": "8 RGB contract/loader tests + 18 migrated camera regression tests passed; GPU inference/training not executed"
+}

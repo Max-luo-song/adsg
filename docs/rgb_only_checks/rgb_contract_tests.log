@@ -1,0 +1,45 @@
+test_assembly_creates_dynamic_nodes_and_separate_road_background (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+{"ok": true, "scene": "621", "frames": 5, "cameras": ["0"], "image_size": [32, 48], "seed_points": 2820, "instances": 1, "rgb_only": true}
+{"ok": true, "scene": "621", "frames": 5, "cameras": ["0"], "image_size": [32, 48], "seed_points": 2820, "instances": 1, "rgb_only": true}
+ok
+test_camera_depth_convention_and_invalid_resize (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+ok
+test_cross_camera_merges_cannot_collapse_same_camera_objects (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+ok
+test_pixel_source_cpu_reads_predicted_cameras_and_depth (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+{"ok": true, "scene": "621", "frames": 5, "cameras": ["0"], "image_size": [32, 48], "seed_points": 2820, "instances": 1, "rgb_only": true}
+
+Loading images:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading images: 100%|██████████| 5/5 [00:00<00:00, 7042.15it/s]
+
+Loading dynamic masks:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading dynamic masks: 100%|██████████| 5/5 [00:00<00:00, 8335.26it/s]
+
+Loading human masks:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading human masks: 100%|██████████| 5/5 [00:00<00:00, 9198.04it/s]
+
+Loading vehicle masks:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading vehicle masks: 100%|██████████| 5/5 [00:00<00:00, 9485.08it/s]
+
+Loading sky masks:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading sky masks: 100%|██████████| 5/5 [00:00<00:00, 9892.23it/s]
+
+Loading road masks:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading road masks: 100%|██████████| 5/5 [00:00<00:00, 9016.13it/s]
+ok
+test_reference_scene_list_parser (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+ok
+test_rgb_index_preserves_nonzero_frame_ids_and_ignores_gt (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+INDEX_OK scene=621 frames=5 cameras=['0']
+ok
+test_static_detected_vehicle_is_not_marked_moving (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+{"ok": true, "scene": "621", "frames": 5, "cameras": ["0"], "image_size": [32, 48], "seed_points": 2500, "instances": 0, "rgb_only": true}
+ok
+test_validation_rejects_corrupt_depth_and_camera_coverage (test_rgb_only.RGBContracts) ... INDEX_OK scene=621 frames=5 cameras=['0']
+{"ok": true, "scene": "621", "frames": 5, "cameras": ["0"], "image_size": [32, 48], "seed_points": 2820, "instances": 1, "rgb_only": true}
+ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.625s
+
+OK

@@ -1,0 +1,86 @@
+test_bad_input_stops_before_gpu_or_output_creation (test_simple_runner.SimpleRunnerTests) ... ok
+test_batch_729_scenes_is_not_truncated (test_simple_runner.SimpleRunnerTests) ... ok
+test_changed_fps_and_added_scene_are_rejected_without_overwrite (test_simple_runner.SimpleRunnerTests) ... ok
+test_check_only_does_not_claim_inference (test_simple_runner.SimpleRunnerTests) ... ok
+test_first_run_and_repeat_with_more_gpus (test_simple_runner.SimpleRunnerTests) ... ok
+test_interrupted_stage_resumes_and_retains_existing_input (test_simple_runner.SimpleRunnerTests) ... ok
+test_output_inside_images_is_rejected (test_simple_runner.SimpleRunnerTests) ... ok
+test_single_scene_does_not_read_siblings_and_has_stable_paths (test_simple_runner.SimpleRunnerTests) ... ok
+test_waymo_adapter_selects_zero_based_scene_without_gt_cameras (test_simple_runner.SimpleRunnerTests) ... ok
+test_failure_retains_raw_for_resume (test_standalone.StandaloneTests) ... [stage] scene=scene stage=omega log=/tmp/tmptkyipvhu/out/logs/scene/batch_0000_omega.log
+[stage/done] scene=scene stage=omega seconds=0.00
+[stage] scene=scene stage=gca log=/tmp/tmptkyipvhu/out/logs/scene/batch_0000_gca.log
+ok
+test_generic_index_synchronization_and_arbitrary_ids (test_standalone.StandaloneTests) ... ok
+test_gpu_count_respects_scheduler_visibility (test_standalone.StandaloneTests) ... ok
+test_metric_conversion_matches_original_front_camera (test_standalone.StandaloneTests) ... ok
+test_pipeline_outputs_match_old_alignment_and_cleanup (test_standalone.StandaloneTests) ... [stage] scene=scene stage=omega log=/tmp/tmpfrbdh44t/out/logs/scene/batch_0000_omega.log
+[stage/done] scene=scene stage=omega seconds=0.00
+[stage] scene=scene stage=gca log=/tmp/tmpfrbdh44t/out/logs/scene/batch_0000_gca.log
+[stage/done] scene=scene stage=gca seconds=0.00
+[stage] scene=scene stage=metric log=/tmp/tmpfrbdh44t/out/logs/scene/batch_0000_metric.log
+[stage/done] scene=scene stage=metric seconds=0.01
+[scene/done] scene
+ok
+test_scheduler_resume_changes_card_count_and_rejects_config_mix (test_standalone.StandaloneTests) ... filesystem_free_gib=1642.3 reserve_gib=0.0; project quota is not measured
+validated_final=0/4 pending=4
+[worker] gpu=0 scene=s0
+[worker] gpu=1 scene=s1
+[stage] scene=s0 stage=omega log=/tmp/tmpks9hsqfp/out/logs/s0/batch_0000_omega.log
+[stage] scene=s1 stage=omega log=/tmp/tmpks9hsqfp/out/logs/s1/batch_0000_omega.log
+[stage/done] scene=s0 stage=omega seconds=0.00
+[stage] scene=s0 stage=gca log=/tmp/tmpks9hsqfp/out/logs/s0/batch_0000_gca.log
+[stage/done] scene=s1 stage=omega seconds=0.00
+[stage] scene=s1 stage=gca log=/tmp/tmpks9hsqfp/out/logs/s1/batch_0000_gca.log
+[stage/done] scene=s1 stage=gca seconds=0.00
+[stage] scene=s1 stage=metric log=/tmp/tmpks9hsqfp/out/logs/s1/batch_0000_metric.log
+[stage/done] scene=s0 stage=gca seconds=0.00
+[stage] scene=s0 stage=metric log=/tmp/tmpks9hsqfp/out/logs/s0/batch_0000_metric.log
+[stage/done] scene=s1 stage=metric seconds=0.01
+[stage/done] scene=s0 stage=metric seconds=0.01
+[scene/done] s1
+[scene/done] s0
+[worker] gpu=0 scene=s3
+[worker] gpu=1 scene=s2
+[stage] scene=s3 stage=omega log=/tmp/tmpks9hsqfp/out/logs/s3/batch_0000_omega.log
+[stage] scene=s2 stage=omega log=/tmp/tmpks9hsqfp/out/logs/s2/batch_0000_omega.log
+[stage/done] scene=s2 stage=omega seconds=0.00
+[stage/done] scene=s3 stage=omega seconds=0.00
+[stage] scene=s2 stage=gca log=/tmp/tmpks9hsqfp/out/logs/s2/batch_0000_gca.log
+[stage] scene=s3 stage=gca log=/tmp/tmpks9hsqfp/out/logs/s3/batch_0000_gca.log
+[stage/done] scene=s2 stage=gca seconds=0.00
+[stage] scene=s2 stage=metric log=/tmp/tmpks9hsqfp/out/logs/s2/batch_0000_metric.log
+[stage/done] scene=s3 stage=gca seconds=0.00
+[stage] scene=s3 stage=metric log=/tmp/tmpks9hsqfp/out/logs/s3/batch_0000_metric.log
+[stage/done] scene=s2 stage=metric seconds=0.01
+[stage/done] scene=s3 stage=metric seconds=0.01
+[scene/done] s2
+[scene/done] s3
+PREPARE_DONE
+filesystem_free_gib=1642.3 reserve_gib=0.0; project quota is not measured
+validated_final=4/4 pending=0
+PREPARE_DONE
+filesystem_free_gib=1642.3 reserve_gib=0.0; project quota is not measured
+ok
+test_short_sequence_arbitrary_reference_and_corrupt_resume (test_standalone.StandaloneTests) ... [stage] scene=scene stage=omega log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_omega.log
+[stage/done] scene=scene stage=omega seconds=0.00
+[stage] scene=scene stage=gca log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_gca.log
+[stage/done] scene=scene stage=gca seconds=0.00
+[stage] scene=scene stage=metric log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_metric.log
+[stage/done] scene=scene stage=metric seconds=0.00
+[scene/done] scene
+[stage] scene=scene stage=omega log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_omega.log
+[stage/done] scene=scene stage=omega seconds=0.00
+[stage] scene=scene stage=gca log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_gca.log
+[stage/done] scene=scene stage=gca seconds=0.00
+[stage] scene=scene stage=metric log=/tmp/tmpbcy6afob/out/logs/scene/batch_0000_metric.log
+[stage/done] scene=scene stage=metric seconds=0.00
+[scene/done] scene
+ok
+test_waymo_rgb_only_accepts_one_scene (test_standalone.StandaloneTests) ... ok
+test_window_tail_and_small_scene (test_standalone.StandaloneTests) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.211s
+
+OK
